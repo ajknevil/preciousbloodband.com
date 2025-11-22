@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Responsive helper utilities */
+.container-fluid, .container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+img.responsive, img.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Improve tap targets */
+button, a.button, .btn {
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+}
+
+/* Base responsive typography */
+html { font-size: 16px; }
+@media (max-width: 576px) {
+  html { font-size: 15px; }
+}
+@media (min-width: 1200px) {
+  html { font-size: 18px; }
+}
+
+/* Hero slide image helpers */
+.single-hero-slide { position: relative; overflow: hidden; }
+.hero-slide-figure { position: absolute; inset: 0; margin: 0; }
+
+/* Ensure the <picture> and img in the hero fill the container exactly and sit
+   behind the overlay content. */
+.hero-slide-figure picture,
+.hero-slide-figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero-slide-figure picture { z-index: -12; }
+.hero-slide-figure img.hero-slide-img {
+  object-fit: cover;
+  object-position: center;
+  z-index: -10; /* keep image behind overlay and overlay tint */
+}
+
+/* Remove pagination dots (carousel indicators) across all Carousels */
+.carousel-indicators {
+  display: none !important;
+}
+
+/* Video thumbnail sizing to visually align with hero proportions */
+.video-thumb {
+  width: 100%;
+  max-height: 480px; /* keep thumbnails reasonably sized */
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 1200px) {
+  .video-thumb { max-height: 520px; }
+}
+
+/* App-level sizing variables ------------------------------------------------- */
+:root {
+  --app-header-height: 64px; /* conservative baseline header height */
+  --app-header-height-mobile: 56px;
+}
+
+/* Hero sizing: prefer viewport-filling hero but subtract header. Fallback to a
+   sensible fixed min-height for older browsers that don't support calc(). */
+#hero {
+  min-height: calc(100vh - var(--app-header-height));
+  min-height: -webkit-calc(100vh - var(--app-header-height));
+  min-height: 640px; /* fallback if calc not supported or viewport is very small */
+  position: relative;
+  display: block;
+}
+
+/* Ensure the slide container fills the hero wrapper and keeps image behind
+   the overlay content. These rules are intentionally specific so they don't
+   collide with other template rules. */
+.single-hero-slide {
+  height: 100% !important;
+  min-height: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slides-content {
+  position: relative;
+  z-index: 2; /* ensure overlay content sits above images */
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  /* Shorter hero on small screens to avoid excessive vertical scrolling */
+  #hero { min-height: calc(100vh - var(--app-header-height-mobile)); min-height: 420px; }
+  .video-thumb { max-height: 360px; }
+}
+
+/* Ensure carousel internals inherit the hero height so each slide fills the
+   available space. React-Bootstrap/Bootstrap add some internal wrappers, so
+   target them specifically. */
+.hero-area, #hero, .hero-slides, .hero-slides .carousel-inner,
+.hero-slides .carousel-item, .hero-slides .single-hero-slide {
+  height: calc(100vh - var(--app-header-height)) !important;
+  min-height: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .hero-area, #hero, .hero-slides, .hero-slides .carousel-inner,
+  .hero-slides .carousel-item, .hero-slides .single-hero-slide {
+    height: calc(100vh - var(--app-header-height-mobile)) !important;
+  }
+}
+
+/* Keep picture/img absolutely covering the slide (already set, but be
+   defensive in case Bootstrap adds inline heights). */
+.hero-slide-figure picture,
+.hero-slide-figure img.hero-slide-img {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Ensure Carousel and its items stretch to fill the hero container */
+.hero-area .hero-slides {
+  height: 100%;
+}
+.hero-area .hero-slides .carousel-inner {
+  height: 100%;
+}
+.hero-area .hero-slides .carousel-item {
+  height: 100%;
+}
+.hero-area .single-hero-slide {
+  height: 100%;
+  min-height: 0;
+}
+.hero-area .hero-slide-figure {
+  height: 100%;
+}
+.hero-area .hero-slides-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Stronger image rules to ensure hero images cover the entire hero area */
+.hero-area .hero-slide-figure,
+.hero-area .hero-slide-figure picture,
+.hero-area .hero-slide-figure picture > img,
+.hero-area .hero-slide-figure img.hero-slide-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: calc(100vh - var(--app-header-height)) !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+@media (max-width: 767px) {
+  .hero-area .hero-slide-figure,
+  .hero-area .hero-slide-figure picture,
+  .hero-area .hero-slide-figure picture > img,
+  .hero-area .hero-slide-figure img.hero-slide-img {
+    min-height: calc(100vh - var(--app-header-height-mobile)) !important;
+  }
+}
+
+/* LatestAlbums tile layout: make each album card a vertical flex box so the
+   image can expand and the album-info sits at the bottom. This ensures tiles
+   align vertically inside the carousel slides when using .standard-section. */
+.albums-slideshow .carousel-item > .row { height: 100%; }
+.albums-slideshow .single-album {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+.albums-slideshow .single-album img {
+  width: 100%;
+  flex: 1 1 auto;
+  object-fit: cover;
+  display: block;
+}
+.albums-slideshow .album-info {
+  padding: 0.75rem 0 1rem;
+}
+
+/* More defensive rules: ensure carousel inner and columns stretch in all layouts */
+.albums-slideshow .carousel-inner,
+.albums-slideshow .carousel-item,
+.albums-slideshow .carousel-item > .row,
+.albums-slideshow .carousel-item > .row > [class*="col-"],
+.albums-slideshow .carousel-item > .row > [class*="col-"] > .d-flex {
+  height: 100% !important;
+}
+
+/* Make album-info stick to the bottom of the album card so images grow above */
+.albums-slideshow .single-album .album-info {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* If album images are very short, provide a minimum height so cards look consistent */
+.albums-slideshow .single-album img {
+  min-height: 160px;
+}
+
+
+
+

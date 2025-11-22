@@ -1,0 +1,58 @@
+/* Animation theme tokens for FLIP animations
+   Edit these values to tune the animation system globally.
+*/
+:root {
+  /* Move animation (FLIP) */
+  --flip-move-duration: 420ms;
+  --flip-move-ease: cubic-bezier(.2,.9,.2,1);
+  --flip-move-stagger: 25ms;
+
+  /* Enter animation for newly inserted items */
+  --flip-enter-duration: 360ms;
+  --flip-enter-stagger: 40ms;
+
+  /* Masonry image area height (can be overridden per-breakpoint) */
+  --masonry-image-height: 160px;
+
+  /* Masonry column transitions / layout wrapper
+     These default to the FLIP move tokens but can be tuned separately if needed. */
+  --masonry-column-transition-duration: var(--flip-move-duration, 420ms);
+  --masonry-column-transition-ease: var(--flip-move-ease, cubic-bezier(.2,.9,.2,1));
+  --masonry-column-transition-delay: 0ms;
+  /* Fade/easing tokens for simple show/hide transitions (aliases to FLIP tokens by default) */
+  --masonry-fade-duration: var(--flip-move-duration, 300ms);
+  --masonry-fade-ease: var(--flip-move-ease, ease);
+  /* Separate ease token for enter opacity if you prefer different easing than move */
+  --flip-enter-ease: ease;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --masonry-image-height: 120px;
+  }
+}
+
+/* small mobile: <480px */
+@media (max-width: 479px) {
+  :root { --masonry-image-height: 100px; }
+}
+
+/* mobile: 480 - 767px */
+@media (min-width: 480px) and (max-width: 767px) {
+  :root { --masonry-image-height: 120px; }
+}
+
+/* tablet: 768 - 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  :root { --masonry-image-height: 150px; }
+}
+
+/* desktop: 992 - 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+  :root { --masonry-image-height: 170px; }
+}
+
+/* large desktop: >=1200px */
+@media (min-width: 1200px) {
+  :root { --masonry-image-height: 200px; }
+}

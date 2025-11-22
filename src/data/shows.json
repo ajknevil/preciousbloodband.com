@@ -1,0 +1,23 @@
+[
+  {
+    "date": "Oct 31, 2025",
+    "venue": "Lucky 13 Saloon",
+    "address": "644 Sackett St",
+    "city": "Brooklyn, NY",
+    "img": "img/bg-img/show1.jpg"
+  },
+  {
+    "date": "Oct 25, 2025",
+    "venue": "Village Pub",
+    "address": "174 N. Wellwood Ave",
+    "city": "Lindenhurst, LI",
+    "img": "img/bg-img/show2.jpg"
+  },
+  {
+    "date": "Oct 17, 2025",
+    "venue": "Jimmy's Bar & Grill",
+    "address": "188 Midland Ave",
+    "city": "Kearny, NJ",
+    "img": "img/bg-img/show3.jpg"
+  }
+]

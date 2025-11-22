@@ -1,0 +1,58 @@
+[
+  {
+    "img": "img/bg-img/b1.jpg",
+    "title": "Garage Band",
+    "subtitle": "Radio Station",
+    "price": "$0.90",
+    "category": "vinyl"
+  },
+  {
+    "img": "img/bg-img/b2.jpg",
+    "title": "Noises",
+    "subtitle": "Buble Gum",
+    "price": "$0.90",
+    "category": "mp3"
+  },
+  {
+    "img": "img/bg-img/b3.jpg",
+    "title": "Jess Parker",
+    "subtitle": "The Album",
+    "price": "$0.90",
+    "category": "vinyl"
+  },
+  {
+    "img": "img/bg-img/b4.jpg",
+    "title": "Noises",
+    "subtitle": "Buble Gum",
+    "price": "$0.90",
+    "category": "merch"
+  },
+  {
+    "img": "img/bg-img/b1.jpg",
+    "title": "Garage Band",
+    "subtitle": "Radio Station",
+    "price": "$0.90",
+    "category": "mp3"
+  },
+  {
+    "img": "img/bg-img/b2.jpg",
+    "title": "Noises",
+    "subtitle": "Buble Gum",
+    "price": "$0.90",
+    "category": "merch"
+  },
+  {
+    "img": "img/bg-img/b3.jpg",
+    "title": "Jess Parker",
+    "subtitle": "The Album",
+    "price": "$0.90",
+    "category": "vinyl"
+  },
+  {
+    "img": "img/bg-img/b4.jpg",
+    "title": "Noises",
+    "subtitle": "Buble Gum",
+    "price": "$0.90",
+    "category": "mp3"
+  }
+]

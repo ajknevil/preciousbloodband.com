@@ -1,0 +1,398 @@
+/* App base styles */
+body {
+	margin: 0;
+}
+
+/* Dark theme: page background and base text color */
+html, body {
+	background-color: #000;
+	color: #88171b;
+}
+
+/* Force text color site-wide; avoid affecting replaced elements (images, videos, svgs) */
+:where(body, body *) {
+	color: #88171b !important;
+}
+
+/* Keep hero area and footer text white regardless of global text color */
+.hero-area,
+.hero-area *,
+.app-footer,
+.app-footer * {
+	color: #fff !important;
+}
+
+/* Semi-transparent fixed navbar */
+.fixed-top {
+	background-color: rgba(0,0,0,0.5) !important;
+	backdrop-filter: blur(6px);
+}
+.fixed-top .nav-link,
+.fixed-top .navbar-brand,
+.fixed-top .navbar-toggler-icon,
+.fixed-top .navbar-text {
+	color: #fff !important;
+}
+
+/* Keep the hamburger (navbar-toggler) at a constant right position and vertically centered */
+.fixed-top .navbar-toggler {
+	position: absolute;
+	right: 12px;
+	top: 8px; /* fixed distance from top */
+	transform: none;
+	z-index: 1100; /* above the navbar content */
+}
+
+/* Remove visible outline/box-shadow when toggler is active or focused (hamburger)
+	 NOTE: this removes the focus ring visually; if you want to preserve keyboard
+	 focus visibility, replace :focus, :active with :focus:not(:focus-visible). */
+.fixed-top .navbar-toggler,
+.fixed-top .navbar-toggler:focus,
+.fixed-top .navbar-toggler:active,
+.fixed-top .navbar-toggler:hover {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.fixed-top .navbar-toggler:focus-visible {
+	/* keep a subtle focus indicator only for browsers that support focus-visible
+		 to retain some keyboard accessibility; comment this block out to remove entirely */
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/* Ensure brand stays pinned to the top-left across breakpoints.
+	 Use absolute positioning relative to the fixed-top navbar so the
+	 brand doesn't shift when the Container centers the nav on larger screens.
+	 Keep a high z-index so it stays above the collapsing menu/toggler. */
+.fixed-top .navbar-brand {
+	position: absolute;
+	left: 12px; /* match toggler inset for visual alignment */
+	top: 50%;
+	transform: translateY(-50%);
+	margin-right: 0; /* no flow margin needed since positioned */
+	z-index: 1110; /* above toggler (1100) and collapse (1090) */
+}
+
+/* Keep navbar height consistent across breakpoints (restore original template height) */
+.fixed-top {
+	height: 64px; /* restored previous (smaller) navbar height */
+}
+.fixed-top .navbar-brand,
+.fixed-top .nav {
+	height: 100%;
+	display: flex;
+	align-items: center; /* vertically center content inside the taller navbar */
+}
+
+/* Make collapsed menu overlay rather than expanding navbar */
+.fixed-top .navbar-collapse {
+	position: absolute;
+	top: 64px; /* drop down below the navbar */
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.85);
+	z-index: 1090;
+}
+
+/* When collapsed (hidden), keep it invisible and don't affect layout */
+@media (min-width: 992px) {
+	.fixed-top .navbar-collapse {
+		position: static;
+		background: transparent;
+	}
+}
+
+/* Reserve space for fixed navbar so content isn't hidden under it */
+.App {
+	padding-top: 64px; /* matches .fixed-top height to avoid content jump */
+}
+
+/* Smooth scrolling for in-page nav, but respect user preference for reduced motion */
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+@import './styles/animation-tokens.css';
+
+/* Masonry gallery wrapper — legacy column rules disabled because we use react-masonry-css */
+.masonry-gallery {
+	/* disable legacy CSS column layout to avoid conflicts with react-masonry-css */
+	column-count: initial;
+	column-gap: 0;
+	width: 100%;
+}
+.masonry-item {
+	break-inside: avoid;
+	margin-bottom: 1rem;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+	border-radius: 4px;
+	overflow: hidden;
+}
+.masonry-item img {
+	width: 100%;
+	display: block;
+}
+.masonry-item figcaption { padding: 0.5rem; }
+.masonry-item .price { float: right; font-weight: bold; }
+.masonry-meta h5 { margin: 0; font-size: 1rem; }
+
+@media (min-width: 768px) {
+	/* legacy column-count removed */
+}
+
+@media (min-width: 1200px) {
+	/* legacy column-count removed */
+}
+
+/* react-masonry-css grid classes */
+.my-masonry-grid {
+	display: flex;
+	margin-left: -1rem; /* gutter size offset */
+	width: 100%;
+	box-sizing: border-box;
+}
+.my-masonry-grid_column {
+	padding-left: 1rem; /* gutter size */
+	background-clip: padding-box;
+	/* ensure column stacks items vertically and items fill column width */
+	display: flex;
+	flex-direction: column;
+	/* allow column to grow/shrink evenly */
+	flex: 1 0 0;
+	box-sizing: border-box;
+}
+.my-masonry-grid_column > .masonry-item {
+	margin-bottom: 1rem;
+	/* make sure each masonry item stretches to fill the column */
+	width: 100%;
+	align-self: stretch;
+	box-sizing: border-box;
+}
+
+/* ensure images inside cards are responsive and fill their container */
+.masonry-item img,
+.card-img-top {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Equal-height cards: set card as column flex so body grows to fill space */
+.masonry-item.card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.masonry-item.card .card-img-top {
+	width: 100%;
+	height: var(--masonry-image-height, 160px); /* image area height */
+	object-fit: cover;
+	flex: 0 0 auto;
+}
+
+.masonry-item.card .card-body {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0.5rem;
+}
+
+/* fade/slide animations for filtering — use theme tokens so durations/easings match FLIP */
+.masonry-item {
+	transition: opacity var(--masonry-fade-duration, 300ms) var(--masonry-fade-ease, ease), transform var(--flip-move-duration, 300ms) var(--flip-move-ease, ease);
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* optional layout animation wrapper */
+.masonry-wrapper.animating .my-masonry-grid_column {
+	transition: transform var(--masonry-column-transition-duration, 300ms) var(--masonry-column-transition-ease, ease) var(--masonry-column-transition-delay, 0ms),
+				opacity var(--masonry-column-transition-duration, 300ms) var(--masonry-column-transition-ease, ease) var(--masonry-column-transition-delay, 0ms);
+	will-change: transform, opacity;
+}
+
+/* FLIP animation helper classes */
+.flip-from {
+	transform: translate(var(--flip-x, 0), var(--flip-y, 0));
+}
+.flip-move {
+	transition: transform var(--flip-move-duration, 420ms) var(--flip-move-ease, cubic-bezier(.2,.9,.2,1));
+	will-change: transform;
+}
+.flip-enter {
+	opacity: 0;
+	transform: scale(.985);
+	will-change: opacity, transform;
+}
+.flip-enter.flip-enter-to {
+	opacity: 1;
+	transform: none;
+	transition: transform var(--flip-enter-duration, 360ms) var(--flip-move-ease, cubic-bezier(.2,.9,.2,1)), opacity var(--flip-enter-duration, 360ms) var(--flip-enter-ease, ease);
+}
+.flip-cleanup {
+	transition: none !important;
+	transform: none !important;
+	opacity: 1 !important;
+	will-change: auto !important;
+}
+
+/* Stronger active nav styling */
+.navbar .nav-link.active,
+.navbar .dropdown-item.active {
+	color: var(--bs-primary, #0d6efd) !important;
+	font-weight: 700;
+}
+
+.navbar .nav-link.active {
+	position: relative;
+}
+
+.navbar .nav-link.active::after {
+	content: "";
+	position: absolute;
+	left: 12px;
+	right: 12px;
+	bottom: -8px;
+	height: 3px;
+	background: linear-gradient(90deg, rgba(13,110,253,1), rgba(102,16,242,1));
+	border-radius: 2px;
+	opacity: 0.95;
+}
+
+/* Remove the underline on small screens (mobile-friendly) */
+@media (max-width: 991px) {
+	.navbar .nav-link.active::after {
+		display: none;
+	}
+}
+
+/* Keep left padding on nav links in mobile (collapsed) mode */
+@media (max-width: 991px) {
+	.fixed-top .navbar-collapse .nav-link {
+		padding-left: 1.25rem; /* 20px */
+		padding-right: 1.25rem;
+		text-align: left;
+		width: 100%;
+	}
+	.fixed-top .navbar-collapse .nav {
+		display: block;
+	}
+}
+
+/* Tiny screens: avoid overlap between brand and toggler by reducing brand size
+ 	and nudging the toggler. Threshold chosen at 420px which covers many
+ 	small phones in portrait. */
+@media (max-width: 420px) {
+ 	.fixed-top .navbar-brand img {
+ 		height: 28px !important;
+ 		width: 28px !important;
+ 	}
+ 	.fixed-top .navbar-brand {
+ 		left: 8px; /* reduce inset to keep brand fully visible */
+ 	}
+ 	.fixed-top .navbar-toggler {
+ 		right: 8px;
+ 		top: 8px;
+ 		transform: none;
+ 	}
+ 	/* Slightly reduce header padding so the brand and toggler have room */
+ 	.fixed-top {
+ 		height: 60px;
+ 	}
+ 	.App { padding-top: 60px; }
+}
+
+/* Ensure dropdown active item is visually distinct */
+.navbar .dropdown-item.active {
+	background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(102,16,242,0.04));
+}
+
+/* Fix: ensure latest album titles are not covered by overlay buttons/controls */
+.latest-albums-area .single-album .album-info {
+	position: relative; /* keep stacking context */
+	z-index: 60; /* above typical controls (arrows ~10 now) */
+	pointer-events: auto; /* allow clicks on title links */
+}
+
+/* Place carousel indicators below the slide area for the albums slideshow
+	 so the small indicator buttons don't overlap and block album titles. */
+.albums-slideshow {
+	/* make room for indicators so they don't overlap album info */
+	padding-bottom: 48px;
+}
+
+.albums-slideshow .carousel-indicators {
+	bottom: -42px; /* push indicators further below the slide content */
+	z-index: 5;    /* sit below album titles but above background */
+}
+
+/* Slightly increase hit area of indicator buttons (optional, UX) */
+.albums-slideshow .carousel-indicators button {
+	height: 10px;
+}
+
+/* Make Bootstrap carousel controls more visible specifically for the albums slideshow */
+.albums-slideshow .carousel-control-prev,
+.albums-slideshow .carousel-control-next {
+	/* transparent, icon-only controls */
+	width: auto;
+	height: auto;
+	padding: 8px 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	box-shadow: none;
+	opacity: 1;
+	transition: transform 120ms ease, opacity 120ms ease;
+	z-index: 20; /* above slide content but below titles */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.albums-slideshow .carousel-control-prev-icon,
+.albums-slideshow .carousel-control-next-icon {
+	background-size: 28px 28px;
+	filter: drop-shadow(0 1px 1px rgba(0,0,0,0.45));
+	opacity: 0.98;
+	/* subtle backdrop to increase contrast without a full dark circle */
+	background-color: rgba(0,0,0,0.18);
+	padding: 6px;
+	border-radius: 6px;
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.albums-slideshow .carousel-control-prev:hover,
+.albums-slideshow .carousel-control-next:hover {
+	transform: translateY(-50%) scale(1.04);
+	opacity: 1;
+}
+
+@media (max-width: 767px) {
+	.albums-slideshow .carousel-control-prev,
+	.albums-slideshow .carousel-control-next {
+		width: 44px;
+		height: 44px;
+		border-width: 1.5px;
+	}
+	.albums-slideshow .carousel-indicators {
+		bottom: -36px;
+	}
+}
+
