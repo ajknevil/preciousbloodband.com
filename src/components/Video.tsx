@@ -2,12 +2,16 @@ import React from "react";
 import { Container, Carousel, Button } from "react-bootstrap";
 import videos from "../data/videos.json";
 
-export default function Video({ onWatchVideo, className = "" }) {
+interface VideoProps {
+  onWatchVideo?: (embed: string, vid: string) => void;
+  className?: string;
+}
+
+export default function Video({ onWatchVideo, className = "" }: VideoProps) {
   const videoList = videos || [];
   if (videoList.length === 0) return null;
 
-  const handleOpen = (vid) => {
-    // construct embed URL with autoplay
+  const handleOpen = (vid: string) => {
     const embed = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0`;
     if (onWatchVideo) onWatchVideo(embed, vid);
   };

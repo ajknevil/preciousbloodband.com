@@ -1,15 +1,19 @@
 import React from "react";
-import { Carousel, Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
 import { makeSrcSets } from "../utils/imageHelpers";
 
-export default function HeroArea({ onWatchVideo }) {
+interface HeroAreaProps {
+  onWatchVideo?: (src: string) => void;
+}
+
+export default function HeroArea({ onWatchVideo }: HeroAreaProps) {
   const carouselStyle = { height: "100%" };
   const slideStyle = { height: "100%" };
   const figureStyle = { height: "100%", width: "100%" };
 
   return (
     <section
-      id="hero"
+      id="home"
       className="hero-area"
       style={{
         minHeight: "calc(100vh - var(--app-header-height, 64px))",
@@ -152,7 +156,6 @@ export default function HeroArea({ onWatchVideo }) {
             </Container>
           </div>
         </Carousel.Item>
-
         <Carousel.Item>
           <div
             className="single-hero-slide d-flex align-items-center justify-content-center"

@@ -15,30 +15,12 @@ export default function Bio() {
       .catch(() => setText("<p>Bio loading failed.</p>"));
   }, []);
 
-  const bgStyle = {
-    position: "absolute",
-    inset: 0,
-    // dark overlay + background image so we don't need to edit the source image
-    backgroundImage:
-      'linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.80)), url("/img/bg-img/bio-background-image.png")',
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    opacity: 1,
-    zIndex: 0,
-  };
-  const sectionInnerStyle = {
-    position: "relative",
-    zIndex: 1,
-  };
-
   return (
     <section
       id="bio"
-      className="bio-area section-padding-100"
-      style={{ position: "relative" }}
+      className="bio-area section-padding-100 bg-img bg-overlay"
     >
-      <div aria-hidden="true" style={bgStyle} />
-      <Container style={sectionInnerStyle}>
+      <Container>
         <Row className="align-items-center">
           <Col md={6} lg={5}>
             <div className="bio-thumb text-center mb-3">

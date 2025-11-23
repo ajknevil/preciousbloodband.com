@@ -14,13 +14,13 @@ import AppFooter from "./components/AppFooter";
 import albums from "./data/albums.json";
 
 export default function App() {
-  const [videoSrc, setVideoSrc] = useState(null);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoOpen, setVideoOpen] = useState(false);
 
   useEffect(() => {
     // remove preloader if present
     const p = document.querySelector(".preloader");
-    if (p) {
+    if (p instanceof HTMLElement) {
       p.style.transition = "opacity 300ms ease";
       p.style.opacity = "0";
       setTimeout(() => p.remove(), 350);
@@ -32,7 +32,7 @@ export default function App() {
       <ResponsiveNavbar />
 
       <HeroArea
-        onWatchVideo={(src) => {
+        onWatchVideo={(src: string) => {
           setVideoSrc(src);
           setVideoOpen(true);
         }}
@@ -44,7 +44,7 @@ export default function App() {
 
       <Video
         className="fullscreen-video-section"
-        onWatchVideo={(src) => {
+        onWatchVideo={(src: string) => {
           setVideoSrc(src);
           setVideoOpen(true);
         }}

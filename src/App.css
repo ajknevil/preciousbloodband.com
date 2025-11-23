@@ -104,9 +104,7 @@ html, body {
 }
 
 /* Reserve space for fixed navbar so content isn't hidden under it */
-.App {
-	padding-top: 64px; /* matches .fixed-top height to avoid content jump */
-}
+
 
 /* Smooth scrolling for in-page nav, but respect user preference for reduced motion */
 html {
@@ -144,37 +142,22 @@ html {
 .masonry-item .price { float: right; font-weight: bold; }
 .masonry-meta h5 { margin: 0; font-size: 1rem; }
 
+/* Masonry grid responsive columns (keep only this part from the block above) */
 @media (min-width: 768px) {
-	/* legacy column-count removed */
-}
-
-@media (min-width: 1200px) {
-	/* legacy column-count removed */
-}
-
-/* react-masonry-css grid classes */
-.my-masonry-grid {
-	display: flex;
-	margin-left: -1rem; /* gutter size offset */
-	width: 100%;
-	box-sizing: border-box;
-}
-.my-masonry-grid_column {
-	padding-left: 1rem; /* gutter size */
-	background-clip: padding-box;
-	/* ensure column stacks items vertically and items fill column width */
-	display: flex;
-	flex-direction: column;
-	/* allow column to grow/shrink evenly */
-	flex: 1 0 0;
-	box-sizing: border-box;
-}
-.my-masonry-grid_column > .masonry-item {
-	margin-bottom: 1rem;
-	/* make sure each masonry item stretches to fill the column */
-	width: 100%;
-	align-self: stretch;
-	box-sizing: border-box;
+	.my-masonry-grid_column {
+		padding-left: 1rem; /* gutter size */
+		background-clip: padding-box;
+		display: flex;
+		flex-direction: column;
+		flex: 1 0 0;
+		box-sizing: border-box;
+	}
+	.my-masonry-grid_column > .masonry-item {
+		margin-bottom: 1rem;
+		width: 100%;
+		align-self: stretch;
+		box-sizing: border-box;
+	}
 }
 
 /* ensure images inside cards are responsive and fill their container */
@@ -246,76 +229,133 @@ html {
 	will-change: auto !important;
 }
 
-/* Stronger active nav styling */
-.navbar .nav-link.active,
-.navbar .dropdown-item.active {
-	color: var(--bs-primary, #0d6efd) !important;
-	font-weight: 700;
+
+/* --- ResponsiveNavbar enforced styles --- */
+.navbar.pb-navbar {
+	background: #000 !important;
+	height: 48px !important;
+	min-height: 48px !important;
+	box-shadow: 0 2px 12px 0 rgba(0,0,0,0.12);
+	padding: 0.5rem 2rem !important;
+	display: flex;
+	align-items: center;
+	transition: height 0.2s, min-height 0.2s;
+}
+.navbar.pb-navbar .navbar-nav {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+.navbar.pb-navbar .nav-link {
+	height: 64px !important;
+	display: flex !important;
+	align-items: center !important;
+}
+.navbar.pb-navbar .navbar-brand {
+	display: flex !important;
+	align-items: center !important;
+	gap: 12px !important;
+}
+.navbar.pb-navbar .navbar-brand img {
+	width: 48px !important;
+	height: 48px !important;
+	border-radius: 50% !important;
+	background: #fff !important;
+}
+.navbar.pb-navbar .nav-link {
+	color: #fff !important;
+	font-weight: 500 !important;
+	font-size: 28px !important;
+	letter-spacing: 1px !important;
+	background: none !important;
+	border: none !important;
+	position: relative !important;
+	padding: 0 0.5rem !important;
+	transition: color 0.2s, font-weight 0.2s !important;
+	display: flex !important;
+	align-items: center !important;
 }
 
-.navbar .nav-link.active {
-	position: relative;
-}
-
-.navbar .nav-link.active::after {
-	content: "";
-	position: absolute;
-	left: 12px;
-	right: 12px;
-	bottom: -8px;
-	height: 3px;
-	background: linear-gradient(90deg, rgba(13,110,253,1), rgba(102,16,242,1));
-	border-radius: 2px;
-	opacity: 0.95;
-}
-
-/* Remove the underline on small screens (mobile-friendly) */
 @media (max-width: 991px) {
-	.navbar .nav-link.active::after {
-		display: none;
+	.navbar.pb-navbar {
+		min-height: 48px !important;
+		height: 48px !important;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
 	}
-}
-
-/* Keep left padding on nav links in mobile (collapsed) mode */
-@media (max-width: 991px) {
-	.fixed-top .navbar-collapse .nav-link {
-		padding-left: 1.25rem; /* 20px */
-		padding-right: 1.25rem;
-		text-align: left;
+	.navbar.pb-navbar .navbar-collapse {
+		position: absolute !important;
+		top: 48px !important;
+		left: 0 !important;
+		right: 0 !important;
+		background: rgba(0,0,0,0.95) !important;
+		z-index: 1090 !important;
+		box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12);
+		padding: 0.5rem 0 0.5rem 0 !important;
+	}
+	.navbar.pb-navbar .nav-link {
+		font-size: 18px !important;
+		line-height: 1.2 !important;
+		height: 40px !important;
+		min-height: 40px !important;
+		max-height: 40px !important;
+		padding-left: 1.25rem !important;
+		padding-right: 1.25rem !important;
+		text-align: left !important;
 		width: 100%;
 	}
-	.fixed-top .navbar-collapse .nav {
-		display: block;
+	.navbar.pb-navbar .navbar-toggler {
+		left: unset !important;
+		right: 0 !important;
+		position: absolute !important;
+		top: 8px !important;
+		transform: none !important;
+		z-index: 1100 !important;
+		max-height: 40px !important;
+		width: 40px !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		background: none !important;
+		border: none !important;
+	}
+	.navbar.pb-navbar .navbar-toggler .navbar-toggler-icon {
+		width: 28px !important;
+		height: 28px !important;
+		background-size: 28px 28px !important;
+		display: block !important;
+		margin: 0 auto !important;
+	}
+	.navbar.pb-navbar .navbar-brand {
+		left: 12px !important;
+		right: auto !important;
+		position: absolute !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+		z-index: 1110 !important;
 	}
 }
-
-/* Tiny screens: avoid overlap between brand and toggler by reducing brand size
- 	and nudging the toggler. Threshold chosen at 420px which covers many
- 	small phones in portrait. */
-@media (max-width: 420px) {
- 	.fixed-top .navbar-brand img {
- 		height: 28px !important;
- 		width: 28px !important;
- 	}
- 	.fixed-top .navbar-brand {
- 		left: 8px; /* reduce inset to keep brand fully visible */
- 	}
- 	.fixed-top .navbar-toggler {
- 		right: 8px;
- 		top: 8px;
- 		transform: none;
- 	}
- 	/* Slightly reduce header padding so the brand and toggler have room */
- 	.fixed-top {
- 		height: 60px;
- 	}
- 	.App { padding-top: 60px; }
+.navbar.pb-navbar .nav-link.active-link,
+.navbar.pb-navbar .nav-link.active {
+	color: #1976f6 !important;
+	font-weight: 700 !important;
 }
-
-/* Ensure dropdown active item is visually distinct */
-.navbar .dropdown-item.active {
-	background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(102,16,242,0.04));
+.navbar.pb-navbar .nav-link.active-link span,
+.navbar.pb-navbar .nav-link.active span {
+	display: block !important;
+	height: 4px !important;
+	border-radius: 2px !important;
+	background: #1976f6 !important;
+	width: 70% !important;
+	margin: 0.2rem auto 0 auto !important;
 }
+@media (max-width: 991px) {
+	.navbar.pb-navbar .nav-link.active-link span,
+	.navbar.pb-navbar .nav-link.active span {
+		display: none !important;
+	}
+}
+/* --- End ResponsiveNavbar enforced styles --- */
 
 /* Fix: ensure latest album titles are not covered by overlay buttons/controls */
 .latest-albums-area .single-album .album-info {

@@ -5,27 +5,12 @@ import { makeSrcSetsFor } from "../utils/imageHelpers";
 
 export default function Shows() {
   const upcoming = Array.isArray(shows) ? shows : [];
-
   return (
     <section
       id="shows"
-      className="shows-area section-padding-100"
-      style={{ position: "relative" }}
+      className="shows-area section-padding-100 bg-img bg-overlay"
     >
-      {/* background layer: dark gradient over the tour background image */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url("/img/bg-img/tour-background-image-v2.jpg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          zIndex: 0,
-        }}
-      />
-      <Container style={{ position: "relative", zIndex: 1 }}>
+      <Container>
         <Row>
           <Col>
             <div className="section-heading style-2 text-center mb-4">

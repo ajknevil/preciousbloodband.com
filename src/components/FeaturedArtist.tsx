@@ -23,7 +23,7 @@ export default function FeaturedArtist() {
           <Col md={7} lg={8}>
             <div className="featured-artist-content text-white">
               <div className="section-heading white text-left mb-30">
-                <p>See what’s new</p>
+                <p>See whats new</p>
                 <h2>Featured Artist</h2>
               </div>
               <p>
