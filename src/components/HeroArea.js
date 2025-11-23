@@ -79,7 +79,6 @@ export default function HeroArea({ onWatchVideo }) {
                   <div className="hero-slides-content">
                     <h6>Latest album</h6>
                     <h2>
-                      False Prophets{" "}
                       <span aria-hidden="true">False Prophets</span>
                     </h2>
                     <Button variant="primary" className="mt-3" href="#albums">
@@ -205,7 +204,7 @@ export default function HeroArea({ onWatchVideo }) {
                   <div className="hero-slides-content">
                     <h6>Latest Video</h6>
                     <h2>
-                      El Muerte <span aria-hidden="true">El Muerte </span>
+                      <span aria-hidden="true">El Muerte </span>
                     </h2>
                     <Button
                       variant="primary"
@@ -213,7 +212,7 @@ export default function HeroArea({ onWatchVideo }) {
                       onClick={() =>
                         onWatchVideo &&
                         onWatchVideo(
-                          "https://www.youtube.com/embed/OFdPTWqJsns?autoplay=1"
+                          "https://www.youtube.com/embed/dZqGRL3Iqqo?autoplay=1"
                         )
                       }
                     >

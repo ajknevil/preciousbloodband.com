@@ -1,12 +1,8 @@
 [
-  { "id": "v1", "title": "\"El Muerte\" (Official Lyric Video)", "vid": "OFdPTWqJsns", "thumb": "https://img.youtube.com/vi/OFdPTWqJsns/hqdefault.jpg", "order": 1, "category": "lyric" },
-  { "id": "v2", "title": "\"Old Man Abaddon\" (Official Lyric Video)", "vid": "K_erC9pq4eQ", "thumb": "https://img.youtube.com/vi/K_erC9pq4eQ/hqdefault.jpg", "order": 2, "category": "lyric" },
-  { "id": "v3", "title": "\"Bludgeoned & Charred\" (Official Video)", "vid": "qDPUJ8T5RBg", "thumb": "https://img.youtube.com/vi/qDPUJ8T5RBg/hqdefault.jpg", "order": 3, "category": "official" },
-  { "id": "v4", "title": "Watchtower Witch", "vid": "oQuOZyQuyKo", "thumb": "https://img.youtube.com/vi/oQuOZyQuyKo/hqdefault.jpg", "order": 4, "category": "official" },
-  { "id": "v5", "title": "Bloodfire", "vid": "2Lfxk5POL5s", "thumb": "https://img.youtube.com/vi/2Lfxk5POL5s/hqdefault.jpg", "order": 5, "category": "single" },
-  { "id": "v6", "title": "Vendetta", "vid": "AyhMTuKBQ8E", "thumb": "https://img.youtube.com/vi/AyhMTuKBQ8E/hqdefault.jpg", "order": 6, "category": "official" },
-  { "id": "v7", "title": "Eternal", "vid": "TwbvviSQoco", "thumb": "https://img.youtube.com/vi/TwbvviSQoco/hqdefault.jpg", "order": 7, "category": "single" },
-  { "id": "v8", "title": "Black Strap", "vid": "SxwSDKhBJO0", "thumb": "https://img.youtube.com/vi/SxwSDKhBJO0/hqdefault.jpg", "order": 8, "category": "single" },
-  { "id": "v9", "title": "Hellbound", "vid": "PEECqG_vYjY", "thumb": "https://img.youtube.com/vi/PEECqG_vYjY/hqdefault.jpg", "order": 9, "category": "official" },
-  { "id": "v10", "title": "Bushmon Truth", "vid": "oIHk10w3pVw", "thumb": "https://img.youtube.com/vi/oIHk10w3pVw/hqdefault.jpg", "order": 10, "category": "official" }
+  { "id": "v1", "title": "\"El Muerte\" (Official Video)", "vid": "dZqGRL3Iqqo", "thumb": "https://img.youtube.com/vi/dZqGRL3Iqqo/hqdefault.jpg", "order": 1, "category": "lyric" },
+  { "id": "v2", "title": "\"Whore's Grave\" (Official Video)", "vid": "e-hfTh1gd2Y", "thumb": "https://img.youtube.com/vi/e-hfTh1gd2Y/hqdefault.jpg", "order": 2, "category": "lyric" },
+  { "id": "v3", "title": "\"False Prophets\" (Visual Album)", "vid": "-32tC8ZOi-4", "thumb": "https://img.youtube.com/vi/-32tC8ZOi-4/hqdefault.jpg", "order": 3, "category": "official" },
+  { "id": "v4", "title": "\"Bludgeoned & Charred\" (Official Video)", "vid": "qDPUJ8T5RBg", "thumb": "https://img.youtube.com/vi/qDPUJ8T5RBg/hqdefault.jpg", "order": 3, "category": "official" },
+  { "id": "v5", "title": "\"Watchtower Witch\" (Official Video)", "vid": "oQuOZyQuyKo", "thumb": "https://img.youtube.com/vi/oQuOZyQuyKo/hqdefault.jpg", "order": 4, "category": "official" },
+  { "id": "v6", "title": "Black Strap", "vid": "SxwSDKhBJO0", "thumb": "https://img.youtube.com/vi/SxwSDKhBJO0/hqdefault.jpg", "order": 8, "category": "single" }
 ]
