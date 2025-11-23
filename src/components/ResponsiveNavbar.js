@@ -98,8 +98,8 @@ export default function ResponsiveNavbar() {
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
-        <Navbar.Collapse id="main-navbar">
-          <Nav className="me-auto">
+        <Navbar.Collapse id="main-navbar" className="custom-navbar-align">
+          <Nav className="me-auto custom-nav-align">
             <Nav.Link href="#hero" active={activeId === "hero"}>
               Home
             </Nav.Link>

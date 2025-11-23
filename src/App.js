@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "./styles/navbar-align.css";
 import ResponsiveNavbar from "./components/ResponsiveNavbar";
 import VideoModal from "./components/VideoModal";
 import ScrollToTop from "./components/ScrollToTop";
@@ -8,13 +9,9 @@ import LatestAlbums from "./components/LatestAlbums";
 import Shows from "./components/Shows";
 import Bio from "./components/Bio";
 import Video from "./components/Video";
-import BuyNowArea from "./components/BuyNowArea";
-import FeaturedArtist from "./components/FeaturedArtist";
-import ContactArea from "./components/ContactArea";
 import AppFooter from "./components/AppFooter";
 
 import albums from "./data/albums.json";
-import buyItems from "./data/buyItems.json";
 
 export default function App() {
   const [videoSrc, setVideoSrc] = useState(null);
@@ -46,6 +43,7 @@ export default function App() {
       <Shows />
 
       <Video
+        className="fullscreen-video-section"
         onWatchVideo={(src) => {
           setVideoSrc(src);
           setVideoOpen(true);

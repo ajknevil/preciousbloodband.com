@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Carousel, Button } from "react-bootstrap";
 import videos from "../data/videos.json";
 
-export default function Video({ onWatchVideo }) {
+export default function Video({ onWatchVideo, className = "" }) {
   const videoList = videos || [];
   if (videoList.length === 0) return null;
 
@@ -13,9 +13,15 @@ export default function Video({ onWatchVideo }) {
   };
 
   return (
-    <section id="videos" className="video-area section-padding-100">
-      <Container>
-        <h3 className="mb-4">Videos</h3>
+    <section
+      id="videos"
+      className={`video-area section-padding-100 fullscreen-video-section ${className}`.trim()}
+    >
+      <Container
+        fluid
+        className="h-100 d-flex flex-column justify-content-center"
+      >
+        <h3 className="mb-4">Videos AP</h3>
         <Carousel>
           {videoList.map((v) => (
             <Carousel.Item key={v.id}>

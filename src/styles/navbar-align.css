@@ -1,0 +1,36 @@
+/* Make the Video section fill the viewport height minus navbar */
+.fullscreen-video-section {
+  min-height: calc(100vh - 56px); /* 56px = navbar height, adjust if needed */
+  height: calc(100vh - 56px);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Ensure anchor navigation aligns section tops with the bottom of the fixed navbar */
+section[id],
+#hero,
+#albums,
+#shows,
+#videos,
+#bio,
+#buy,
+#featured,
+#contact {
+  scroll-margin-top: 56px; /* Adjust if your navbar is taller */
+}
+/* Ensures Nav.Link items are vertically centered and fill the Navbar height */
+.custom-navbar-align {
+  min-height: 56px; /* Default Bootstrap navbar height, adjust if needed */
+  display: flex;
+  align-items: center;
+}
+
+.custom-nav-align .nav-link {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
