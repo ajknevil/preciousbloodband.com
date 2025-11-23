@@ -21,7 +21,7 @@ export default function Video({ onWatchVideo, className = "" }) {
         fluid
         className="h-100 d-flex flex-column justify-content-center"
       >
-        <h3 className="mb-4">Videos AP</h3>
+        <h3 className="mb-4">Videos</h3>
         <Carousel>
           {videoList.map((v) => (
             <Carousel.Item key={v.id}>
